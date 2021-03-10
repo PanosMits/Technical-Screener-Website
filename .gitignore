@@ -1,9 +1,9 @@
 # front-end
-/front-end//node_modules
-/front-end//.pnp
+/front-end/node_modules
+/front-end/.pnp
 /front-end/.pnp.js
-/front-end//coverage
-/front-end//build
+/front-end/coverage
+/front-end/build
 /front-end/.DS_Store
 /front-end/.env.local
 /front-end/.env.development.local
