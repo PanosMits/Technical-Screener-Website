@@ -5,8 +5,10 @@ import Loader from '../Components/Loader';
 
 const Home = () => {
     const { pattern } = useParams();
-    const { error, isLoading, data: patternResults } = useFetch(`/api/get-technical-analysis/${pattern}`);
+    // const { error, isLoading, data: patternResults } = useFetch(`/api/get-technical-analysis/${pattern}/`);
+    const { error, isLoading, data: patternResults } = useFetch(`/api/test/${pattern}/`);
 
+    console.log(patternResults);
     return (
         <div>
             <div className="jumbotron">
