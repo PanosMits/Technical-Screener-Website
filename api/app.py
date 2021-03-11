@@ -4,6 +4,7 @@ import pandas as pd
 import talib
 import yfinance as yf
 import pandas_datareader.data as pdr
+import time
 
 from flask import Flask, render_template, request
 from datetime import datetime
@@ -20,7 +21,7 @@ app = Flask(__name__)
 
 
 @app.route('/api/test', methods=['GET'])
-def index():
+def test_function():
     time.sleep(2)
     return {
         'status': 200,
