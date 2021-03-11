@@ -6,6 +6,10 @@ This repo can be used as a template for a React-Flask application.
 
 ```
 cd api/
+mkdir venv
+cd venv/
+virtualenv . - (If having virtualenv installed in your machine)
+cd ..
 cp .env.dist .env
 source venv/bin/activate
 pip3 install -r requirements.txt
