@@ -1,0 +1,6 @@
+Flask
+TA-Lib
+python-dotenv
+pandas
+yfinance
+pandas_datareader
