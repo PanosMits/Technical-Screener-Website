@@ -20,12 +20,14 @@ app = Flask(__name__)
 # more here: https://stackoverflow.com/questions/3061/calling-a-function-of-a-module-by-using-its-name-a-string
 
 
-@app.route('/api/test', methods=['GET'])
-def test_function():
+@app.route('/api/test/<pattern>/', methods=['GET'])
+def test_function(pattern):
     time.sleep(2)
+    print(pattern)
     return {
         'status': 200,
-        'message': 'All good'
+        'message': 'All good',
+        'data': pattern
     }
 
 
