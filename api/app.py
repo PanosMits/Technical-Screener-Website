@@ -31,10 +31,10 @@ def test_function(pattern):
     }
 
 
-@app.route('/api/get-technical-analysis', methods=['GET'])
-def index():
+@app.route('/api/get-technical-analysis/<pattern>/', methods=['GET'])
+def index(pattern):
     # Get the url parameter pattern, default to None
-    pattern = request.args.get('pattern', None)
+    # pattern = request.args.get('pattern', None)
     stocks = {}
 
     with open('datasets/companies.csv') as f:
@@ -65,7 +65,11 @@ def index():
             except:
                 pass
 
-    return render_template('index.html', patterns=patterns, stocks=stocks, current_pattern=pattern)
+    return {
+        'patterns': patterns,
+        'stocks': stocks,
+        'current_pattern': pattern
+    }
 
 
 # Get the historical data for companies up to a specified date and save them in csv files under the datasets/daily dir
