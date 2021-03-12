@@ -9,8 +9,6 @@ import time
 from flask import Flask, render_template, request
 from datetime import datetime
 
-from patterns import patterns
-
 app = Flask(__name__)
 
 # NOTES
@@ -18,17 +16,6 @@ app = Flask(__name__)
 # and gets us the function in a variable that we can use - We can do that cause talib functions are attributes
 # or something like that
 # more here: https://stackoverflow.com/questions/3061/calling-a-function-of-a-module-by-using-its-name-a-string
-
-
-@app.route('/api/test/<pattern>/', methods=['GET'])
-def test_function(pattern):
-    time.sleep(2)
-    print(pattern)
-    return {
-        'status': 200,
-        'message': 'All good',
-        'data': pattern
-    }
 
 
 @app.route('/api/get-technical-analysis/<pattern>/', methods=['GET'])
