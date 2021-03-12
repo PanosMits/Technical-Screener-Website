@@ -2,7 +2,7 @@
 A simple technical analysis website <br>
 
 
-<h3>Flask</h2>
+<h3>Flask</h3>
 
 ```
 cd api/
@@ -22,7 +22,7 @@ flask run --host=0.0.0.0 --port=80
 ```
 
 
-<h3>React</h2>
+<h3>React</h3>
 
 ```
 cd to front-end/
@@ -33,4 +33,5 @@ yarn start
 In `package.json` we need to specify a `proxy` attribute.<br>
 The value of that attribute must be the URL that we run the Flask backend at. (flask run command)
 
+<h3>Demo</h3>
 ![Technical Screener Demo GIF](demo/technical-screener-demo.gif)
