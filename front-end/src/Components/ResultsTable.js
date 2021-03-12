@@ -1,4 +1,4 @@
-const ResultsTable = ({ data }) => {
+const ResultsTable = ({ stocks, currentPattern }) => {
     return (
         <div className="jumbotron">
             <table>
@@ -7,17 +7,19 @@ const ResultsTable = ({ data }) => {
                     <th>Company name</th>
                     <th>Signal</th>
                 </tr>
-                {console.log(data.current_pattern)}
-                {/* {data.map((datum) => console.log(datum))} */}
-                {/* {% for stock in stocks %}
-                    {% if stocks[stock][current_pattern] %}
-                        <tr>
-                        <td>{{ stock }}</td>
-                        <td>{{ stocks[stock]['company'] }}</td>
-                        <td class="{{ stocks[stock][current_pattern] }}">{{ stocks[stock][current_pattern] }}</td>
-                    </tr>
-                    {% endif %}
-                {% endfor %} */}
+                {
+                    Object.values(stocks).map((stock) => {
+                        if (stock[currentPattern]) {
+                            return (
+                                <tr>
+                                    <td>{stock.symbol}</td>
+                                    <td>{stock.company}</td>
+                                    <td>{stock[currentPattern]}</td>
+                                </tr>
+                            )
+                        }
+                    })
+                }
             </table>
         </div>
     )

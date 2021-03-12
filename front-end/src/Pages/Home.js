@@ -8,13 +8,12 @@ const Home = () => {
     const { pattern } = useParams();
     const { error, isLoading, data: patternResults } = useFetch(`/api/get-technical-analysis/${pattern}/`);
 
-    console.log(patternResults);
     return (
         <div>
             <div className="jumbotron">
                 <SearchForm />
             </div>
-            {patternResults && <ResultsTable data={patternResults} />}
+            {patternResults && <ResultsTable stocks={patternResults.stocks} currentPattern={patternResults.current_pattern} />}
             { error && patternResults && <div>{error}</div>}
             { isLoading && <Loader />}
         </div >
