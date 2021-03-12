@@ -33,4 +33,4 @@ yarn start
 In `package.json` we need to specify a `proxy` attribute.<br>
 The value of that attribute must be the URL that we run the Flask backend at. (flask run command)
 
-![Technical Screener Demo GIF](./demo/technical-screener-demo.gif)
+![Technical Screener Demo GIF](demo/technical-screener-demo.gif)
