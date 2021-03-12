@@ -39,7 +39,7 @@ def index(pattern):
 
     with open('datasets/companies.csv') as f:
         for row in csv.reader(f):
-            stocks[row[0]] = {'company': row[1]}
+            stocks[row[0]] = {'symbol': row[0], 'company': row[1]}
 
     if pattern:
         datafiles = os.listdir('datasets/daily/companies')
