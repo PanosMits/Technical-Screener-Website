@@ -6,6 +6,7 @@
   font-family: "Quicksand";
   color: #333;
 }
+
 .App {
   text-align: center;
 }
@@ -16,13 +17,9 @@
   padding: 20px;
 }
 
-.navbar {
-  padding: 20px;
-  display: flex;
-  align-items: center;
-  max-width: 600px;
-  margin: 0 auto;
-  border-bottom: 1px solid #f2f2f2;
+.jumbotron {
+  margin-top: 1rem !important; 
+  margin-bottom: 1rem !important; 
 }
 
 .search-form {
@@ -58,4 +55,27 @@
   padding: 8px;
   border-radius: 8px;
   cursor: pointer;
+}
+
+table {
+  width: 100%;
+}
+
+table tbody th {
+  color: #f1356d;
+  font-size: 130%;
+}
+
+.bearish, .bullish {
+  color: rgb(255, 255, 255);
+  border-radius: 10px;
+  padding: .5rem;
+}
+
+.bearish {
+  color: red;
+}
+
+.bullish {
+  color: green;
 }

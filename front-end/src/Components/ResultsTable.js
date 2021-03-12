@@ -12,7 +12,7 @@ const ResultsTable = ({ stocks, currentPattern }) => {
     }
 
     return (
-        <div className="jumbotron">
+        <div className="jumbotron pt-4">
             <table>
                 <tbody>
                     <tr>
@@ -25,7 +25,7 @@ const ResultsTable = ({ stocks, currentPattern }) => {
                             <tr key={index}>
                                 <td>{stock.symbol}</td>
                                 <td>{stock.company}</td>
-                                <td>{stock[currentPattern]}</td>
+                                <td className={stock[currentPattern]}>{stock[currentPattern]}</td>
                             </tr>
                         )
                     }

@@ -13,11 +13,14 @@ const Home = () => {
             <div className="jumbotron">
                 <SearchForm />
             </div>
+
+            {isLoading && <Loader />}
+            {isLoading && <Loader />}
+            {isLoading && <Loader />}
+
             {patternResults && <ResultsTable stocks={patternResults.stocks} currentPattern={patternResults.current_pattern} />}
+
             { error && patternResults && <div>{error}</div>}
-            { isLoading && <Loader />}
-            { isLoading && <Loader />}
-            { isLoading && <Loader />}
         </div >
     )
 }
