@@ -7,6 +7,7 @@ const useFetch = (url) => {
 
     useEffect(() => {
         const abortCont = new AbortController();
+        setIsLoading(true);
 
         fetch(url, { signal: abortCont.signal })
             .then(response => {

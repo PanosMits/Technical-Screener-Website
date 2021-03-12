@@ -16,6 +16,8 @@ const Home = () => {
             {patternResults && <ResultsTable stocks={patternResults.stocks} currentPattern={patternResults.current_pattern} />}
             { error && patternResults && <div>{error}</div>}
             { isLoading && <Loader />}
+            { isLoading && <Loader />}
+            { isLoading && <Loader />}
         </div >
     )
 }
