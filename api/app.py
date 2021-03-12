@@ -66,7 +66,6 @@ def index(pattern):
                 pass
 
     return {
-        'patterns': patterns,
         'stocks': stocks,
         'current_pattern': pattern
     }
@@ -79,7 +78,7 @@ def snapshot_companies():
         os.makedirs('datasets/daily/companies')
 
     end_date = datetime.today()
-    start_date = datetime(end_date.year, end_date.month, end_date.day - 1)
+    start_date = datetime(end_date.year-1, end_date.month, end_date.day)
 
     with open('datasets/companies.csv') as f:
         companies = f.read().splitlines()
@@ -99,7 +98,7 @@ def snapshot_cryptos():
         os.makedirs('datasets/daily/cryptos')
 
     end_date = datetime.today()
-    start_date = datetime(end_date.year - 1, end_date.month, end_date.day - 1)
+    start_date = datetime(end_date.year - 1, end_date.month, end_date.day)
 
     with open('datasets/cryptos.csv') as f:
         cryptos = f.read().splitlines()
