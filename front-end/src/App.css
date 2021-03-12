@@ -58,6 +58,11 @@ button {
   white-space: nowrap;
 }
 
+button:hover {
+  background: #ea3af0;
+  transition: background .3s;
+}
+
 table {
   width: 100%;
 }
