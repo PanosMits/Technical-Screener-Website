@@ -2,13 +2,15 @@ import PropTypes from 'prop-types'
 
 const Button = ({ text, onClick, disabled }) => {
     return (
-        <button
-            onClick={onClick}
-            className='btn btn-outline-primary'
-            disabled={disabled}
-        >
-            {text}
-        </button>
+        <div className="m-3">
+            <button
+                onClick={onClick}
+                disabled={disabled}
+            >
+                {text}
+            </button>
+        </div>
+
     )
 }
 
