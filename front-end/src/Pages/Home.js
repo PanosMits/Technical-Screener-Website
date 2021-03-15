@@ -36,12 +36,16 @@ const Home = () => {
             });
     }
 
+    const handleMessage = () => {
+        setMessage(null);
+    }
+
     return (
         <div>
             <div className="row">
                 <div className="col-10">
                     <div className="jumbotron">
-                        <SearchForm />
+                        <SearchForm handleMessage={handleMessage} />
                     </div>
                     {patternsLoading && <Loader />}
 
