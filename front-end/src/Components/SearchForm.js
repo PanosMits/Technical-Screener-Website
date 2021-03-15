@@ -2,13 +2,13 @@ import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import patterns from '../Repositories/Patterns';
 
-const SearchForm = ({ handleMessage }) => {
+const SearchForm = ({ handlePriceLoadingErrorMessage }) => {
     const history = useHistory();
     const [pattern, setPattern] = useState(patterns[0].value);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        handleMessage();
+        handlePriceLoadingErrorMessage();
         const candlestick = { pattern };
         history.push(`/${candlestick.pattern}`);
     }

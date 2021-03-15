@@ -10,15 +10,15 @@ const Home = () => {
     const { pattern } = useParams();
     const { error: patternErrorMessage, isLoading: patternsLoading, data: patternResults } = useFetch(`/api/get-technical-analysis/${pattern}/`);
     const [pricesLoading, setPricesLoading] = useState(false);
-    const [message, setMessage] = useState(null);
+    const [priceLoadingErrorMessage, setPriceLoadingErrorMessage] = useState(null);
 
     const loadSnPData = async () => {
         setPricesLoading(true);
-        setMessage(null);
+        setPriceLoadingErrorMessage(null);
         await fetch('/api/snapshot/companies')
             .then(response => {
                 if (!response.ok) {
-                    setMessage('An error occurred, please try again later');
+                    setPriceLoadingErrorMessage('An error occurred, please try again later');
                     setPricesLoading(false);
                 }
             });
@@ -26,18 +26,18 @@ const Home = () => {
 
     const loadCryptoData = async () => {
         setPricesLoading(true);
-        setMessage(null);
+        setPriceLoadingErrorMessage(null);
         await fetch('/api/snapshot/cryptos')
             .then(response => {
                 if (!response.ok) {
-                    setMessage('An error occurred, please try again later');
+                    setPriceLoadingErrorMessage('An error occurred, please try again later');
                     setPricesLoading(false);
                 }
             });
     }
 
-    const handleMessage = () => {
-        setMessage(null);
+    const handlePriceLoadingErrorMessage = () => {
+        setPriceLoadingErrorMessage(null);
     }
 
     return (
@@ -45,7 +45,7 @@ const Home = () => {
             <div className="row">
                 <div className="col-10">
                     <div className="jumbotron">
-                        <SearchForm handleMessage={handleMessage} />
+                        <SearchForm handlePriceLoadingErrorMessage={handlePriceLoadingErrorMessage} />
                     </div>
                     {patternsLoading && <Loader />}
 
@@ -55,8 +55,7 @@ const Home = () => {
                     {patternResults && <ResultsTable stocks={patternResults.stocks} currentPattern={patternResults.current_pattern} />}
 
                     {patternErrorMessage && patternResults && <div>{patternErrorMessage}</div>}
-
-                    {message && <div>{message}</div>}
+                    {priceLoadingErrorMessage && <div>{priceLoadingErrorMessage}</div>}
                 </div>
                 <div className="col-2">
                     <Button text={'Load S&P500 data'} onClick={loadSnPData} />
