@@ -21,6 +21,8 @@ const Home = () => {
                     setPriceLoadingErrorMessage('An error occurred, please try again later');
                     setPricesLoading(false);
                 }
+            }).then(() => {
+                setPricesLoading(false);
             });
     }
 
@@ -33,6 +35,8 @@ const Home = () => {
                     setPriceLoadingErrorMessage('An error occurred, please try again later');
                     setPricesLoading(false);
                 }
+            }).then(() => {
+                setPricesLoading(false);
             });
     }
 
@@ -52,14 +56,21 @@ const Home = () => {
                     {pricesLoading && <Loader />}
                     {pricesLoading && <div>{'Loading prices, this will take a while but you only need to run it once a day'}</div>}
 
-                    {patternResults && <ResultsTable stocks={patternResults.stocks} currentPattern={patternResults.current_pattern} />}
-
                     {patternErrorMessage && patternResults && <div>{patternErrorMessage}</div>}
+
                     {priceLoadingErrorMessage && <div>{priceLoadingErrorMessage}</div>}
                 </div>
                 <div className="col-2">
                     <Button text={'Load S&P500 data'} onClick={loadSnPData} />
                     <Button text={'Load Cryptos data'} onClick={loadCryptoData} />
+                </div>
+            </div>
+            <div className="row">
+                <div className="col-5">
+                    {patternResults && <ResultsTable title={'Company'} currentPattern={patternResults.current_pattern} results={patternResults.stocks} />}
+                </div>
+                <div className="col-5">
+                    {patternResults && <ResultsTable title={'Crypto'} currentPattern={patternResults.current_pattern} results={patternResults.cryptos} />}
                 </div>
             </div>
         </div >

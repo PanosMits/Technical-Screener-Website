@@ -1,9 +1,11 @@
-const ResultsTable = ({ stocks, currentPattern }) => {
-    const filteredStocks = Object.values(stocks).filter((stock) => {
+const ResultsTable = ({ title, currentPattern, results }) => {
+    const filteredResults = Object.values(results).filter((stock) => {
         return stock[currentPattern];
     });
 
-    if (filteredStocks.length === 0) {
+    console.log(filteredResults);
+
+    if (filteredResults.length === 0) {
         return (
             <div className="jumbotron">
                 {`Sorry, no ${currentPattern} results detected`}
@@ -17,15 +19,15 @@ const ResultsTable = ({ stocks, currentPattern }) => {
                 <tbody>
                     <tr>
                         <th>Symbol</th>
-                        <th>Company name</th>
+                        <th>{title}</th>
                         <th>Signal</th>
                     </tr>
                     {
-                        filteredStocks.map((stock, index) =>
+                        filteredResults.map((result, index) =>
                             <tr key={index}>
-                                <td>{stock.symbol}</td>
-                                <td>{stock.company}</td>
-                                <td className={stock[currentPattern]}>{stock[currentPattern]}</td>
+                                <td>{result.symbol}</td>
+                                <td>{result.company ?? result.crypto}</td>
+                                <td className={result[currentPattern]}>{result[currentPattern]}</td>
                             </tr>
                         )
                     }
