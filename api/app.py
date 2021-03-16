@@ -23,16 +23,26 @@ def index(pattern):
     # Get the url parameter pattern, default to None
     # pattern = request.args.get('pattern', None)
     stocks = {}
+    cryptos = {}
 
     with open('datasets/companies.csv') as f:
         for row in csv.reader(f):
             stocks[row[0]] = {'symbol': row[0], 'company': row[1]}
 
+    with open('datasets/cryptos.csv') as f:
+        for row in csv.reader(f):
+            cryptoSymbol = row[0].split(' ')[-1]
+            cryptoName = row[0].split(' ')[0]
+            cryptos[cryptoSymbol] = {
+                'symbol': cryptoSymbol, 'crypto': cryptoName}
+
     if pattern:
+        pattern_function = getattr(talib, pattern)
         datafiles = os.listdir('datasets/daily/companies')
+        cryptoDatafiles = os.listdir('datasets/daily/cryptos')
+
         for filename in datafiles:
             df = pd.read_csv('datasets/daily/companies/{}'.format(filename))
-            pattern_function = getattr(talib, pattern)
             symbol = filename.split('.')[0]
 
             try:
@@ -48,12 +58,31 @@ def index(pattern):
                     pass
                 else:
                     stocks[symbol][pattern] = None
+            except:
+                pass
 
+        for cryptoFilename in cryptoDatafiles:
+            df = pd.read_csv(
+                'datasets/daily/cryptos/{}'.format(cryptoFilename))
+            symbol = cryptoFilename.split('.')[0]
+
+            try:
+                result = pattern_function(df['Open'], df['High'], df['Low'], df['Close'])
+                last_candlestick_value = result.tail(1).values[0]
+                if last_candlestick_value > 0:
+                    cryptos[symbol][pattern] = 'bullish'
+                    pass
+                elif last_candlestick_value < 0:
+                    cryptos[symbol][pattern] = 'bearish'
+                    pass
+                else:
+                    cryptos[symbol][pattern] = None
             except:
                 pass
 
     return {
         'stocks': stocks,
+        'cryptos': cryptos,
         'current_pattern': pattern
     }
 
